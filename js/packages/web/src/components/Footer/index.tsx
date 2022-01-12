@@ -13,7 +13,7 @@ export const Footer = () => {
   };
 
   const AppFooter = styled(Row)`
-  padding: 30px 50px 30px;
+  padding: 20px 50px 20px;
   box-shadow: 3px 3px 3px lightgrey inset;
 `;
 
