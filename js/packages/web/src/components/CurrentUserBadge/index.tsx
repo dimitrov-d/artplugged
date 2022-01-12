@@ -119,10 +119,10 @@ const AddFundsModal = (props: {
         <div
           style={{
             width: '100%',
-            background: '#242424',
             borderRadius: 12,
             marginBottom: 10,
             height: 50,
+            border: '0.5px solid black',
             display: 'flex',
             alignItems: 'center',
             padding: '0 10px',

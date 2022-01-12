@@ -15,15 +15,18 @@ import { ConnectButton } from '@oyster/common';
 import { MobileNavbar } from '../MobileNavbar';
 
 const getDefaultLinkActions = (connected: boolean) => [
-  <Link to={`/`} key={'explore'}>
-    <Button className="app-btn">Explore</Button>
-  </Link>,
   <Link to={`/artworks`} key={'artwork'}>
-    <Button className="app-btn">{connected ? 'My Items' : 'Artwork'}</Button>
+    <Button className="app-btn">Artwork</Button>
   </Link>,
   <Link to={`/artists`} key={'artists'}>
     <Button className="app-btn">Creators</Button>
   </Link>,
+  <Link to={`/`} key={'explore'}>
+    <Button className="app-btn">Explore</Button>
+  </Link>,
+  <Link to={`/`} key={'apply'}>
+    <Button className="app-btn">Apply</Button>
+  </Link>
 ];
 
 const DefaultActions = ({ vertical = false }: { vertical?: boolean }) => {

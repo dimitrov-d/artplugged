@@ -16,7 +16,7 @@ export const MetaplexModal = (props: any) => {
       }}
       className={`modal-box small-modal ${className}`}
       footer={null}
-      width={500}
+      width={'auto'}
       {...rest}
     >
       {children}
