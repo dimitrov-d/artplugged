@@ -806,11 +806,12 @@ export const AuctionCard = ({
           ))}
         {!hideDefaultAction && !wallet.connected && (
           <Button
+            id="bid-btn"
             type="primary"
             size="large"
             className="action-btn"
             onClick={connect}
-            style={{ marginTop: 20 }}
+            style={{ marginLeft: 'auto', marginRight: 'auto', height: '10px', width: '80%', marginTop: 20 }}
           >
             Connect wallet to{' '}
             {auctionView.isInstantSale ? 'purchase' : 'place bid'}

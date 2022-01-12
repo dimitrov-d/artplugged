@@ -1167,6 +1167,7 @@ const LaunchStep = (props: {
           size="large"
           onClick={props.confirm}
           className="action-btn"
+          style={{marginTop: '20px'}}
         >
           Pay with SOL
         </Button>
