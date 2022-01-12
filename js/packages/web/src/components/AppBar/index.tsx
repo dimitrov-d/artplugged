@@ -14,19 +14,17 @@ import {
 import { ConnectButton } from '@oyster/common';
 import { MobileNavbar } from '../MobileNavbar';
 
-const getDefaultLinkActions = (connected: boolean) => {
-  return [
-    <Link to={`/`} key={'explore'}>
-      <Button className="app-btn">Exploring now</Button>
-    </Link>,
-    <Link to={`/artworks`} key={'artwork'}>
-      <Button className="app-btn">{connected ? 'My Items' : 'Artwork'}</Button>
-    </Link>,
-    <Link to={`/artists`} key={'artists'}>
-      <Button className="app-btn">Creators</Button>
-    </Link>,
-  ];
-};
+const getDefaultLinkActions = (connected: boolean) => [
+  <Link to={`/`} key={'explore'}>
+    <Button className="app-btn">Explore</Button>
+  </Link>,
+  <Link to={`/artworks`} key={'artwork'}>
+    <Button className="app-btn">{connected ? 'My Items' : 'Artwork'}</Button>
+  </Link>,
+  <Link to={`/artists`} key={'artists'}>
+    <Button className="app-btn">Creators</Button>
+  </Link>,
+];
 
 const DefaultActions = ({ vertical = false }: { vertical?: boolean }) => {
   const { connected } = useWallet();
