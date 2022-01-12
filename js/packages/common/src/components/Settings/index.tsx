@@ -40,7 +40,7 @@ export const Settings = ({
             <Tooltip title="Address copied">
               <div
                 style={{
-                  background: 'white !important',
+                  background: 'white',
                   fontWeight: 600,
                   letterSpacing: '-0.02em',
                   color: 'black',
