@@ -1,6 +1,6 @@
 export const data = {
   headContent: {
-    title: 'We are Metaplex',
+    title: 'We are Art Plugged Network',
     subtitle: 'About Us',
     bannerImage: '/main-banner.png',
   },
@@ -8,7 +8,7 @@ export const data = {
   midContent: {
     sections: [
       {
-        title: 'Metaplex is a protocol built on top of Solana that allows:',
+        title: 'Art Plugged Network is a protocol built on top of Solana and Metaplex that allows:',
         paragraphs: [
           '• Creating/Minting non-fungible tokens;',
           '• Starting a variety of auctions for primary/secondary sales;',

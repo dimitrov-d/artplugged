@@ -241,7 +241,7 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>Create a new item</h2>
         <p>
-          First time creating on Metaplex?{' '}
+          First time creating on Art Plugged Network?{' '}
           <a href="https://docs.metaplex.com/create-store/sell" target="_blank" rel="noreferrer">
             Read our creators’ guide.
           </a>
