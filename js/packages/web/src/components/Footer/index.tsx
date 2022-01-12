@@ -99,7 +99,7 @@ export const Footer = () => {
       <Col span={24}>
         <Row>
           <Col xs={24} md={8}>
-            <a href="mailto:hello@artplugged.co.uk">hello@artplugged.co.uk</a>
+            <a href="mailto:nfts@artplugged.co.uk">nfts@artplugged.co.uk</a>
           </Col>
           <Col xs={0} md={8}>
             <Row justify="center">

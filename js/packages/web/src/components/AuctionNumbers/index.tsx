@@ -118,27 +118,27 @@ const Countdown = ({ state }: { state?: CountdownState }) => {
         <Col>
           <div className="cd-number">
             {localState.days}
-            <span style={{ opacity: 0.5 }}>days</span>
+            <span style={{ opacity: 0.5, color: 'white !important' }}>days</span>
           </div>
         </Col>
       )}
       <Col>
         <div className="cd-number">
           {localState.hours}
-          <span style={{ opacity: 0.5 }}>hours</span>
+          <span style={{ opacity: 0.5, color: 'white !important'}}>hours</span>
         </div>
       </Col>
       <Col>
         <div className="cd-number">
           {localState.minutes}
-          <span style={{ opacity: 0.5 }}>min</span>
+          <span style={{ opacity: 0.5, color: 'white !important' }}>min</span>
         </div>
       </Col>
       {!localState.days && (
         <Col>
           <div className="cd-number">
             {localState.seconds}
-            <span style={{ opacity: 0.5 }}>sec</span>
+            <span style={{ opacity: 0.5, color: 'white !important' }}>sec</span>
           </div>
         </Col>
       )}

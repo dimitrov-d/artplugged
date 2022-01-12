@@ -853,7 +853,7 @@ export const AuctionCard = ({
         </h1>
         <p
           style={{
-            color: 'white',
+            color: 'white !important',
             textAlign: 'center',
             fontSize: '2rem',
           }}

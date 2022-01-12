@@ -40,9 +40,10 @@ export const Settings = ({
             <Tooltip title="Address copied">
               <div
                 style={{
+                  background: 'white !important',
                   fontWeight: 600,
                   letterSpacing: '-0.02em',
-                  color: '#FFFFFF',
+                  color: 'black',
                 }}
                 onClick={() =>
                   navigator.clipboard.writeText(publicKey?.toBase58() || '')
