@@ -14,7 +14,6 @@ export const Footer = () => {
 
   const AppFooter = styled(Row)`
   padding: 20px 50px 20px;
-  box-shadow: 3px 3px 3px lightgrey inset;
 `;
 
   // const CustomForm = (props: {
@@ -101,18 +100,21 @@ export const Footer = () => {
           <Col xs={24} md={8}>
             <a href="mailto:nfts@artplugged.co.uk">nfts@artplugged.co.uk</a>
           </Col>
-          <Col xs={0} md={8}>
+          <Col xs={24} md={8}>
             <Row justify="center">
               Powered by &nbsp;
-              <a href="https://solana.com"
-              target="_blank" style={{marginRight: '10px'}}
-                rel="noreferrer">Solana</a> &nbsp;
-                <img src="/solana.svg"/>
+              <a href="https://solana.com/">
+                <img src="/solana.svg" />
+              </a>
+              &nbsp; &nbsp;
+              <a href="https://metaplex.com/">
+                <img src="/metaplex.svg" />
+              </a>
             </Row>
           </Col>
-          <Col xs={0} md={8}>
+          <Col xs={24} md={8}>
             <Row justify="end">
-              <SocialLinks/>
+              <SocialLinks />
             </Row>
           </Col>
         </Row>
