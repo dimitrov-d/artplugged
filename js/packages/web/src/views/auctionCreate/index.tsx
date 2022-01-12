@@ -718,7 +718,7 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>List an item</h2>
         <p>
-          First time listing on Art Plugged Network? <a>Read our sellers' guide.</a>
+          First time listing on Art Plugged Network? <a>Read our seller's guide.</a>
         </p>
       </Row>
       <Row justify={width < 768 ? 'center' : 'start'}>
