@@ -98,7 +98,7 @@ export const InstructionsModal: React.FC<ModalProps> = ({
 
   return (
     <>
-      <Button className={buttonClassName} onClick={showModal} id="buy-btn">
+      <Button className={buttonClassName} onClick={showModal} id="how-buy-btn">
         {buttonText}
       </Button>
       <Modal

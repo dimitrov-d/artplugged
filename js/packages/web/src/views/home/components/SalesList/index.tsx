@@ -1,19 +1,32 @@
 import { useWallet } from '@solana/wallet-adapter-react';
-import { Col, Layout, Row, Tabs } from 'antd';
-import { Link } from 'react-router-dom';
+import {
+  PageHeader,
+  List,
+  Space,
+  Row,
+  Col,
+  Typography,
+  ListProps,
+  Carousel,
+  Select,
+  SelectProps,
+  Layout,
+  Tabs
+} from 'antd'; import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 
 import { useMeta } from '../../../../contexts';
 import { CardLoader } from '../../../../components/MyLoader';
 import { Banner } from '../../../../components/Banner';
 import { HowToBuyModal } from '../../../../components/HowToBuyModal';
-
+import styled from 'styled-components';
 import { useAuctionsList } from './hooks/useAuctionsList';
 import { AuctionRenderCard } from '../../../../components/AuctionRenderCard';
-
+import { SelectValue } from 'antd/lib/select';
 const { TabPane } = Tabs;
 const { Content } = Layout;
 
+const Option = Select.Option;
 export enum LiveAuctionViewState {
   All = '0',
   Participated = '1',
@@ -21,12 +34,49 @@ export enum LiveAuctionViewState {
   Resale = '3',
 }
 
+const ListingsHeader = styled(PageHeader)`
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: white;
+  width: calc(100% + 60px);
+  margin-left: -30px;
+  padding: 12px 30px;
+  backdrop-filter: blur(10px);
+  h3 {
+    &.ant-typography {
+      margin: 0;
+    }
+  }
+`;
+
+interface SelectInlineProps extends SelectProps<SelectValue> {
+  label: string;
+}
+
+const SelectInline = styled(Select) <SelectInlineProps>`
+  width: 190px;
+  font-size: 12px;
+  line-height: 12px;
+  .ant-select-selection-item {
+    &:before {
+      color: rgba(255, 255, 255, 0.6);
+      content: '${({ label }) => label}:';
+      display: block;
+      font-size: 14px;
+      color: grey;
+      display: inline-block;
+      padding: 0 12px 0 0;
+    }
+  }
+`;
+
 export const SalesListView = () => {
   const [activeKey, setActiveKey] = useState(LiveAuctionViewState.All);
   const { isLoading } = useMeta();
   const { connected } = useWallet();
   const { auctions, hasResaleAuctions } = useAuctionsList(activeKey);
-
+  // const [filterBy] = useState<LiveAuctionViewState>(LiveAuctionViewState.All);
   return (
     <>
       <Banner
@@ -40,32 +90,52 @@ export const SalesListView = () => {
         <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Col style={{ width: '100%', marginTop: 32 }}>
             <Row>
-              <Tabs
-                activeKey={activeKey}
-                onTabClick={key => setActiveKey(key as LiveAuctionViewState)}
-              >
-                <TabPane
-                  tab={
-                    <>
-                      <span className="live"></span> Live
-                    </>
-                  }
-                  key={LiveAuctionViewState.All}
-                ></TabPane>
-                {hasResaleAuctions && (
-                  <TabPane
-                    tab="Secondary Marketplace"
-                    key={LiveAuctionViewState.Resale}
-                  ></TabPane>
-                )}
-                <TabPane tab="Ended" key={LiveAuctionViewState.Ended}></TabPane>
-                {connected && (
-                  <TabPane
-                    tab="Participated"
-                    key={LiveAuctionViewState.Participated}
-                  ></TabPane>
-                )}
-              </Tabs>
+              <ListingsHeader
+                ghost={false}
+                title={<span>Current listings</span>}
+                extra={[
+                  <Space key="options" direction="horizontal">
+                    <SelectInline
+                      value={activeKey}
+                      dropdownClassName="select-inline-dropdown"
+                      label="Filter"
+                      onChange={(nextActiveKey) => setActiveKey(nextActiveKey)}
+                    >
+                      <Option value={LiveAuctionViewState.All}> <span className="live"></span> Live</Option>
+                      {hasResaleAuctions && (
+                        <Option value={LiveAuctionViewState.Resale}>Secondary</Option>
+                      )}
+                      <Option value={LiveAuctionViewState.Ended}>Ended</Option>
+                      <Option value={LiveAuctionViewState.Participated}>Participated</Option>
+                    </SelectInline>
+                    {/* <SelectInline
+                      label="Sort"
+                      dropdownClassName="select-inline-dropdown"
+                      value={sortBy}
+                      onChange={(nextSortBy) => {
+                        const sort = nextSortBy as SortOptions;
+                        track('Sort Update', {
+                          event_category: 'Discovery',
+                          event_label: sort,
+                          from: sortBy,
+                          to: sort,
+                          filterBy,
+                          nrOfListingsOnDisplay: displayedListings.length,
+                        });
+
+                        setSortBy(sort);
+                        scrollToListingTop();
+                      }}
+                    >
+                      {sortOptions[filterBy].map(({ label, key }) => (
+                        <Option key={key} value={key}>
+                          {label}
+                        </Option>
+                      ))}
+                    </SelectInline> */}
+                  </Space>,
+                ]}
+              />
             </Row>
             <Row>
               <div className="artwork-grid">
