@@ -63,7 +63,7 @@ export const ArtworksView = () => {
 
   const refreshButton = connected && storeIndexer.length !== 0 && (
     <Dropdown.Button
-      className="refresh-button padding0"
+      className="refresh-button"
       onClick={() => pullItemsPage(userAccounts)}
       icon={<DownOutlined />}
       overlayClassName="refresh-overlay"

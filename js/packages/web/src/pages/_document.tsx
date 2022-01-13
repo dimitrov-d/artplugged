@@ -75,13 +75,10 @@ export default class MetaplexDocument extends Document {
             dangerouslySetInnerHTML={{
               __html: `
                 <!-- Global site tag (gtag.js) - Google Analytics -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-35T0RH9RVS"></script>
-                <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'G-35T0RH9RVS');
-                </script>
           `,
             }}
           />
