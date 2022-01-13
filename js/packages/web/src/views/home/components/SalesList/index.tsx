@@ -95,8 +95,8 @@ export const SalesListView = () => {
     <>
       <Banner
         src="/main-banner.svg"
-        headingText="The amazing world of Art Plugged Network."
-        subHeadingText="Buy exclusive Art Plugged Network NFTs."
+        headingText="Discover, Collect NFT Artworks."
+        subHeadingText="Buy exclusive Art Plugged Network curated NFTs"
         actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
         useBannerBg
       />

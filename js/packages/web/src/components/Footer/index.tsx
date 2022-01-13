@@ -103,11 +103,7 @@ export const Footer = () => {
           <Col xs={24} md={8}>
             <Row justify="center">
               Powered by &nbsp;
-              <a href="https://solana.com/">
-                <img src="/solana.svg" />
-              </a>
-              &nbsp; &nbsp;
-              <a href="https://metaplex.com/">
+              <a href="https://metaplex.com/" style={{marginTop: '-5px'}}>
                 <img src="/metaplex.svg" />
               </a>
             </Row>
