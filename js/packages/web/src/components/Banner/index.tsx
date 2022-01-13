@@ -41,11 +41,10 @@ export const Banner = (props: {
           {props.actionComponent}
         </div>
       </div>
-      <div
-        id={'current-banner'}
-        style={{ backgroundImage: `url(${props.src})` }}
-      >
-        <span id={'gradient-banner'}></span>
+      <div id={'current-banner'}>
+        <div id="artwork">
+          <img src="/artpluggedartwork.png" style={{ height: '100%', width: '300px', borderRadius: '10%' }} />
+        </div>
         <div id="banner-inner">
           <div id={'message-container'}>
             <div id={'main-heading'}>{props.headingText}</div>

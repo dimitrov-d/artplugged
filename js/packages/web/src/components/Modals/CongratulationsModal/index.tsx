@@ -40,7 +40,7 @@ const CongratulationsContent: React.FC<CongratulationsProps> = (
       <Button className="ok-button" onClick={handleClickOk}>{buttonText || 'Ok'}</Button>
       {
         !!extraButtonText &&
-        <Button className="extra-button" onClick={onClickExtraButton}>{extraButtonText}</Button>
+        <Button color="white" className="extra-button" onClick={onClickExtraButton}>{extraButtonText}</Button>
       }
     </div>
   )

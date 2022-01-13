@@ -852,11 +852,13 @@ export const AuctionCard = ({
           Nice bid!
         </h1>
         <p
+        id="bid-p"
           style={{
-            color: 'white !important',
+            color: 'white',
             textAlign: 'center',
             fontSize: '2rem',
           }}
+          ref={(el) => el && el.style.setProperty('color', 'white', "important")}
         >
           Your bid of ◎ {formatTokenAmount(lastBid?.amount, mintInfo)} was
           successful
