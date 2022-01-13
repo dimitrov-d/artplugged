@@ -1,17 +1,11 @@
-import { useWallet } from '@solana/wallet-adapter-react';
 import {
   PageHeader,
-  List,
   Space,
   Row,
   Col,
-  Typography,
-  ListProps,
-  Carousel,
   Select,
   SelectProps,
   Layout,
-  Tabs
 } from 'antd'; import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 
@@ -23,7 +17,6 @@ import styled from 'styled-components';
 import { useAuctionsList } from './hooks/useAuctionsList';
 import { AuctionRenderCard } from '../../../../components/AuctionRenderCard';
 import { SelectValue } from 'antd/lib/select';
-const { TabPane } = Tabs;
 const { Content } = Layout;
 
 const Option = Select.Option;
@@ -32,6 +25,12 @@ export enum LiveAuctionViewState {
   Participated = '1',
   Ended = '2',
   Resale = '3',
+}
+
+export enum SortOptions {
+  New = 'New',
+  LowToHigh = 'lowToHigh',
+  HighToLow = 'highToLow',
 }
 
 const ListingsHeader = styled(PageHeader)`
@@ -71,11 +70,26 @@ const SelectInline = styled(Select) <SelectInlineProps>`
   }
 `;
 
+const sortOptions = [
+  {
+    label: 'New',
+    key: SortOptions.New,
+  },
+  {
+    label: 'Low to high',
+    key: SortOptions.LowToHigh,
+  },
+  {
+    label: 'High to low',
+    key: SortOptions.HighToLow,
+  }
+];
+
 export const SalesListView = () => {
   const [activeKey, setActiveKey] = useState(LiveAuctionViewState.All);
   const { isLoading } = useMeta();
-  const { connected } = useWallet();
-  const { auctions, hasResaleAuctions } = useAuctionsList(activeKey);
+  const [sortBy, setSortBy] = useState<SortOptions>(SortOptions.New);
+  const { auctions, hasResaleAuctions } = useAuctionsList(activeKey, sortBy);
   // const [filterBy] = useState<LiveAuctionViewState>(LiveAuctionViewState.All);
   return (
     <>
@@ -108,31 +122,18 @@ export const SalesListView = () => {
                       <Option value={LiveAuctionViewState.Ended}>Ended</Option>
                       <Option value={LiveAuctionViewState.Participated}>Participated</Option>
                     </SelectInline>
-                    {/* <SelectInline
+                    <SelectInline
                       label="Sort"
                       dropdownClassName="select-inline-dropdown"
                       value={sortBy}
-                      onChange={(nextSortBy) => {
-                        const sort = nextSortBy as SortOptions;
-                        track('Sort Update', {
-                          event_category: 'Discovery',
-                          event_label: sort,
-                          from: sortBy,
-                          to: sort,
-                          filterBy,
-                          nrOfListingsOnDisplay: displayedListings.length,
-                        });
-
-                        setSortBy(sort);
-                        scrollToListingTop();
-                      }}
+                      onChange={(nextSortBy) => setSortBy(nextSortBy)}
                     >
-                      {sortOptions[filterBy].map(({ label, key }) => (
+                      {sortOptions.map(({ label, key }) => (
                         <Option key={key} value={key}>
                           {label}
                         </Option>
                       ))}
-                    </SelectInline> */}
+                    </SelectInline>
                   </Space>,
                 ]}
               />
