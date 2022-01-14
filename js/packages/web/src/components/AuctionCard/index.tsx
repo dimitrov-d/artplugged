@@ -510,7 +510,7 @@ export const AuctionCard = ({
           <>
             <span>Auction ends in</span>
             <div>
-              <AuctionCountdown auctionView={auctionView} labels={false} />
+              <AuctionCountdown black={false} auctionView={auctionView} labels={false} />
             </div>
           </>
         )}

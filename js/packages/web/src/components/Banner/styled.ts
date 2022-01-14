@@ -142,3 +142,22 @@ export const StyledSkeletonImage = styled(Skeleton.Image)`
     display: none;
   }
 `;
+export const CustomImageMask = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 72px;
+  height: 72px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  > svg {
+    position absolute;
+    right: 24px;
+    bottom: 24px;
+
+  }
+`;
