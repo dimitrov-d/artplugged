@@ -59,7 +59,12 @@ export const Banner = (props: {
             <ListingPreview
               key={idx}
               auction={auction}
-            />)}
+            />
+            )}
+            {/* <ListingPreview
+              key={0}
+              auction={props.auctions[0]}
+            /> */}
           </HeroCarousel>
         </div>
         <div id="banner-inner">

@@ -3,7 +3,7 @@ import { Skeleton, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
-import { ListingPreviewContainer, NFTPreview, Square, StyledSkeletonImage } from '../Banner/styled';
+import { ListingPreviewContainer, ListingSubTitle, ListingTitle, NFTPreview, Square, StyledSkeletonImage } from '../Banner/styled';
 import { AuctionCountdown } from '../AuctionNumbers';
 import { AuctionView, useArt, useCreators } from '../../hooks';
 
@@ -86,7 +86,7 @@ export interface Creator {
     verified?: boolean;
     share: number;
 }
-export interface NFTMetadata {
+export interface nft {
     description: string;
     external_url: string;
     image: string; // url to image, often ipfs, sometimes arweave
@@ -192,14 +192,14 @@ export const ListingPreview = (props: AuctionViewInt) => {
 
     const [showArtPreview, setShowArtPreview] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [nft, setNFT] = useState<NFTMetadata | null>(null);
+    const [nft, setNFT] = useState<nft | null>(null);
 
     useEffect(() => {
         async function fetchAuctionData() {
             if (!props.auction) return;
             const res = await fetch(props.auction.thumbnail.metadata.info.data.uri);
             if (res.ok) {
-                const nftJson: NFTMetadata = await res.json();
+                const nftJson: nft = await res.json();
                 setNFT(nftJson);
                 setLoading(false);
             }
@@ -208,15 +208,15 @@ export const ListingPreview = (props: AuctionViewInt) => {
 
         fetchAuctionData();
         // async function fetchNFTDataFromIPFS() {
-        //     const res = await fetch(maybeCDN(nftMetadata.uri));
+        //     const res = await fetch(maybeCDN(nft.uri));
 
         //     if (res.ok) {
-        //         const nftJson: NFTMetadata = await res.json();
+        //         const nftJson: nft = await res.json();
         //
 
         //     }
         // }
-        // if (!nftMetadata?.uri) {
+        // if (!nft?.uri) {
         //     return;
         // }
 
@@ -263,42 +263,28 @@ export const ListingPreview = (props: AuctionViewInt) => {
                         {/* <AuctionCountdown auctionView={props.auctions[0]} labels={false} /> */}
 
                     </Square>
-                    {/* <Row justify="space-between" align="middle" wrap={false}>
-                        <ListingTitle level={3} ellipsis={{ tooltip: nftMetadata?.name }}>
-                            {nftMetadata?.name}
+                    <Row justify="space-between" align="middle" wrap={false}>
+                        <ListingTitle level={3} ellipsis={{ tooltip: nft?.name }}>
+                            {nft?.name}
                         </ListingTitle>
-                        <h3 className={listing.endsAt && !listing.totalUncancelledBids ? 'no_bids' : ''}>
-                            <Price size={18} price={displayPrice} />
+                        <h3>
+                            price
                         </h3>
                     </Row>
                     <Row justify="space-between">
-                        <ListingSubTitle ellipsis={{ tooltip: listing.storeTitle }}>
-                            {listing.storeTitle}
-                        </ListingSubTitle>
-                        {listing.endsAt ? <AuctionCountdown endTime={listing.endsAt} /> : <span>Buy now</span>}
+                        <span>Buy now</span>
                     </Row>
-                    {isDev && (
-                        <Row justify="space-between" wrap={false}>
-                            <span
-                                style={{
-                                    fontSize: 14,
-                                    opacity: 0.6,
-                                }}
-                            >
-                                Listed {listing.createdAt.slice(5, 16)}
-                            </span>
-                            <span
-                                style={{
-                                    fontSize: 14,
-                                    opacity: 0.6,
-                                }}
-                            >
-                                Bids: {listing.totalUncancelledBids}, ({listing.lastBidTime?.slice(5, 16)})
-                            </span>
-                        </Row>
-                    )} */}
                 </ListingPreviewContainer>
+                <ListingTitle level={3} ellipsis={{ tooltip: nft?.name }}>
+                    {nft?.name}
+                </ListingTitle>
             </a>
+            <div>
+
+                <span id="xxx">
+                    {nft?.name}
+                </span>
+            </div>
         </div>
     );
 }

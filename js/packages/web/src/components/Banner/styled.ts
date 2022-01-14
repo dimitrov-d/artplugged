@@ -44,9 +44,9 @@ export const HeroCarousel = styled(Carousel)`
 
 export const ListingPreviewContainer = styled(Card)`
   background: white !important;
-  border: 0.1px lightgrey solid !important;
+  border: none;
   border-radius: 5px !important;
-  height: 400px;
+  height: 500px;
   > .ant-card-body {
     padding: 0;
   }
@@ -87,8 +87,8 @@ export const Square = styled(Row)`
 export const NFTPreview = styled(Image)<{ $show: boolean }>`
   display: ${({ $show }) => ($show ? 'block' : 'none')};
   width: 100%;
-  height: 114%;
-  border: solid 1px rgba(255, 255, 255, 0.1);
+  height: 100%;
+  border: solid 1px black !important;
 `;
 
 export const ListingTitle = styled(Title)`
@@ -102,6 +102,7 @@ export const ListingTitle = styled(Title)`
   /* width: 14rem; No longer needed because of flex grow, i think */
 
   + h3 {
+    color: black !important;
     display: flex;
     align-items: center;
     flex-shrink: 0;
