@@ -9,7 +9,11 @@ import { getFilterFunction, resaleAuctionsFilter } from './utils';
 export const useAuctionsList = (
   activeKey: LiveAuctionViewState,
   sortBy: SortOptions,
-): { auctions: AuctionView[]; hasResaleAuctions: boolean } => {
+): {
+  auctions: AuctionView[];
+  hasResaleAuctions: boolean;
+  firstFiveAuctions: AuctionView[];
+} => {
   const { publicKey } = useWallet();
   const auctions = useAuctions();
 
@@ -39,10 +43,11 @@ export const useAuctionsList = (
 
     return filtered;
   }, [activeKey, sortBy, auctions, publicKey]);
+  const hasResaleAuctions = useMemo(
+    () => auctions.some(auction => resaleAuctionsFilter(auction)),
+    [auctions],
+  );
+  const firstFiveAuctions = useMemo(() => _.take(auctions, 5), [auctions]);
 
-  const hasResaleAuctions = useMemo(() => {
-    return auctions.some(auction => resaleAuctionsFilter(auction));
-  }, [auctions]);
-
-  return { auctions: filteredAuctions, hasResaleAuctions };
+  return { auctions: filteredAuctions, hasResaleAuctions, firstFiveAuctions };
 };

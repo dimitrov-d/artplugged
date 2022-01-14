@@ -89,7 +89,8 @@ export const SalesListView = () => {
   const [activeKey, setActiveKey] = useState(LiveAuctionViewState.All);
   const { isLoading } = useMeta();
   const [sortBy, setSortBy] = useState<SortOptions>(SortOptions.New);
-  const { auctions, hasResaleAuctions } = useAuctionsList(activeKey, sortBy);
+  const { auctions, hasResaleAuctions, firstFiveAuctions } = useAuctionsList(activeKey, sortBy);
+  console.log(firstFiveAuctions);
   // const [filterBy] = useState<LiveAuctionViewState>(LiveAuctionViewState.All);
   return (
     <>
@@ -98,6 +99,7 @@ export const SalesListView = () => {
         headingText="Discover, Collect NFT Artworks."
         subHeadingText="Buy exclusive Art Plugged Network curated NFTs"
         actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
+        auctions={firstFiveAuctions}
         useBannerBg
       />
       <Layout>

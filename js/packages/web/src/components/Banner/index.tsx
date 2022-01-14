@@ -1,6 +1,10 @@
 import React from 'react';
 import { useEffect } from 'react';
-
+import { AuctionView, useArt } from '../../hooks';
+import { Typography } from 'antd';
+const { Text } = Typography;
+import { HeroCarousel } from './styled';
+import { ListingPreview } from '../ListingPreview/ListingPreview';
 export const Banner = (props: {
   src: string;
   useBannerBg: boolean;
@@ -8,6 +12,7 @@ export const Banner = (props: {
   subHeadingText: string;
   actionComponent?: JSX.Element;
   children?: React.ReactNode;
+  auctions: AuctionView[];
 }) => {
   useEffect(() => {
     const mainBg = document.getElementById('main-bg');
@@ -29,7 +34,7 @@ export const Banner = (props: {
       }
       if (gradient) gradient.style.display = 'none';
     };
-  }, [props.src, props.useBannerBg]);
+  }, [props.src, props.useBannerBg, props.auctions]);
 
   return (
     <>
@@ -39,24 +44,36 @@ export const Banner = (props: {
           <div id={'main-heading'}>{props.headingText}</div>
           <div id={'sub-heading'}>{props.subHeadingText}</div>
           {props.actionComponent}
+          <div className="powered-by">
+            <span>
+              POWERED BY <b>METAPLEX AND SOLANA</b>
+            </span>
+          </div>
         </div>
       </div>
       <div id={'current-banner'}>
         <div id="artwork">
-          <img src="/artpluggedartwork.png" style={{ height: '100%', width: '300px', borderRadius: '10%' }} />
+          <Text strong style={{fontSize: '20px'}}>Latest Listings</Text>
+          <HeroCarousel autoplay={true} dots={{ className: 'carousel-dots' }} dotPosition="top">
+            {props.auctions.map((auction, idx) =>
+            <ListingPreview
+              key={idx}
+              auction={auction}
+            />)}
+          </HeroCarousel>
         </div>
         <div id="banner-inner">
           <div id={'message-container'}>
             <div id={'main-heading'}>{props.headingText}</div>
             <div id={'sub-heading'}>{props.subHeadingText}</div>
             {props.actionComponent}
+            <div className="powered-by">
+              <span>
+                POWERED BY <b>METAPLEX AND SOLANA</b>
+              </span>
+            </div>
           </div>
           {props.children}
-          <div className="powered-by">
-            <span>
-              POWERED BY <b>METAPLEX AND SOLANA</b>
-            </span>
-          </div>
         </div>
       </div>
     </>
