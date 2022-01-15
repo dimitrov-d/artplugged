@@ -6,7 +6,6 @@ const { Text } = Typography;
 import { HeroCarousel } from './styled';
 import { ListingPreview, SkeletonListing } from '../ListingPreview/ListingPreview';
 export const Banner = (props: {
-  src: string;
   useBannerBg: boolean;
   headingText: string;
   subHeadingText: string;
@@ -19,7 +18,6 @@ export const Banner = (props: {
     const mainBg = document.getElementById('main-bg');
     const gradient = document.getElementById('bg-gradient');
     if (mainBg && props.useBannerBg) {
-      mainBg.style.backgroundImage = `url(${props.src})`;
       mainBg.style.display = 'inline-block';
       if (gradient) {
         gradient.style.display = 'inline-block';
@@ -35,21 +33,32 @@ export const Banner = (props: {
       }
       if (gradient) gradient.style.display = 'none';
     };
-  }, [props.src, props.useBannerBg, props.auctions, props.isLoading]);
+  }, [props.useBannerBg, props.auctions, props.isLoading]);
 
   return (
     <>
       <div id="mobile-banner">
-        <img className="banner-img" src={props.src} />
         <div className="banner-content">
           <div id={'main-heading'}>{props.headingText}</div>
           <div id={'sub-heading'}>{props.subHeadingText}</div>
           {props.actionComponent}
         </div>
+        <Text strong style={{ fontSize: '20px' }}>Latest Listings</Text>
+        {props.isLoading && <SkeletonListing />}
+        {!props.isLoading &&
+          <HeroCarousel autoplay={true} dots={{ className: 'carousel-dots' }} dotPosition="top">
+            {props.auctions.map((auction, idx) =>
+              <ListingPreview
+                key={idx}
+                auction={auction}
+              />
+            )}
+          </HeroCarousel>
+        }
       </div>
       <div id={'current-banner'}>
         <div id="artwork">
-          <Text strong style={{ fontSize: '20px' }}>Latest Listings</Text>
+          <Text strong style={{ fontSize: '2.5vh' }}>Latest Listings</Text>
           {props.isLoading && <SkeletonListing />}
           {!props.isLoading &&
             <HeroCarousel autoplay={true} dots={{ className: 'carousel-dots' }} dotPosition="top">
@@ -59,10 +68,6 @@ export const Banner = (props: {
                   auction={auction}
                 />
               )}
-              {/* <ListingPreview
-              key={0}
-              auction={props.auctions[0]}
-            /> */}
             </HeroCarousel>
           }
         </div>

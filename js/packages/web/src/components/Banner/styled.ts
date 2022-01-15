@@ -88,7 +88,6 @@ export const NFTPreview = styled(Image)<{ $show: boolean }>`
   display: ${({ $show }) => ($show ? 'block' : 'none')};
   width: 100%;
   height: 100%;
-  border: solid 1px black !important;
 `;
 
 export const ListingTitle = styled(Title)`

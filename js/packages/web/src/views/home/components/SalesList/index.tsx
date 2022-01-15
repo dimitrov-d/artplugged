@@ -93,7 +93,6 @@ export const SalesListView = () => {
   return (
     <>
       <Banner
-        src="/main-banner.svg"
         headingText="Discover, Collect NFT Artworks."
         subHeadingText="Buy exclusive Art Plugged Network curated NFTs"
         actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
@@ -101,7 +100,7 @@ export const SalesListView = () => {
         isLoading={isLoading}
         useBannerBg
       />
-      <Layout>
+      <Layout style={{padding: '10px'}}>
         <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Col style={{ width: '100%', marginTop: 32 }}>
             <Row>
@@ -116,7 +115,7 @@ export const SalesListView = () => {
                       label="Filter"
                       onChange={(nextActiveKey) => setActiveKey(nextActiveKey)}
                     >
-                      <Option value={LiveAuctionViewState.All}> <span className="live"></span> Live</Option>
+                      <Option value={LiveAuctionViewState.All}> <span className="live" /> Live</Option>
                       {hasResaleAuctions && (
                         <Option value={LiveAuctionViewState.Resale}>Secondary</Option>
                       )}
