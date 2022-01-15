@@ -3,6 +3,9 @@ import { Carousel, Card, Row, Image, Typography, Skeleton } from 'antd';
 export const { Title, Text } = Typography;
 
 export const HeroCarousel = styled(Carousel)`
+  @media only screen and (max-width: 600px) {
+    margin-bottom: -50px;
+  }
   .carousel-dots {
     position: absolute;
     top: 0;
@@ -10,6 +13,10 @@ export const HeroCarousel = styled(Carousel)`
     margin-top: -24px;
     margin-right: 0px;
     justify-content: flex-end;
+
+    @media (min-width: 600px) and (max-width: 900px) {
+      display: none !important;
+    }
   }
 
   .carousel-dots > li > button {
