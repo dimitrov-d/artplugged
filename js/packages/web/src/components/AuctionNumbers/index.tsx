@@ -16,13 +16,14 @@ import { useTokenList } from '../../contexts/tokenList';
 export const AuctionCountdown = (props: {
   auctionView: AuctionView;
   labels: boolean;
+  black: boolean;
 }) => {
   const { auctionView } = props;
   const state = useAuctionCountdown(auctionView);
   const ended = isEnded(state);
 
   if (!props.labels) {
-    return <Countdown state={state} />;
+    return <Countdown state={state} black={props.black}/>;
   }
   return (
     <Col span={ended ? 24 : 10}>
@@ -87,7 +88,7 @@ export const AuctionNumbers = (props: {
         </>
       )}
       {!ended && !props.hideCountdown ? (
-        <AuctionCountdown auctionView={auctionView} labels={true} />
+        <AuctionCountdown black={false} auctionView={auctionView} labels={true} />
       ) : null}
     </div>
   );
@@ -99,7 +100,7 @@ const isEnded = (state?: CountdownState) =>
   state?.minutes === 0 &&
   state?.seconds === 0;
 
-const Countdown = ({ state }: { state?: CountdownState }) => {
+const Countdown = ({ state, black }: { state?: CountdownState, black: boolean }) => {
   let localState = state;
   if (!localState) {
     localState = {
@@ -116,27 +117,27 @@ const Countdown = ({ state }: { state?: CountdownState }) => {
     >
       {localState.days > 0 && (
         <Col>
-          <div className="cd-number">
+          <div className={black ? 'black-number' : 'cd-number'}>
             {localState.days}
             <span style={{ opacity: 0.5, color: 'white !important' }}>days</span>
           </div>
         </Col>
       )}
       <Col>
-        <div className="cd-number">
+        <div className={black ? 'black-number' : 'cd-number'}>
           {localState.hours}
           <span style={{ opacity: 0.5, color: 'white !important'}}>hours</span>
         </div>
       </Col>
       <Col>
-        <div className="cd-number">
+        <div className={black ? 'black-number' : 'cd-number'}>
           {localState.minutes}
           <span style={{ opacity: 0.5, color: 'white !important' }}>min</span>
         </div>
       </Col>
       {!localState.days && (
         <Col>
-          <div className="cd-number">
+          <div className={black ? 'black-number' : 'cd-number'}>
             {localState.seconds}
             <span style={{ opacity: 0.5, color: 'white !important' }}>sec</span>
           </div>
