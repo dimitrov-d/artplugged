@@ -18,7 +18,7 @@ export function ListingPrice(props: AuctionCard) {
         containerStyle={{ flexDirection: 'row' }}
         displayUSD={true}
         amount={amount}
-        iconSize={30}
+        iconSize={25}
         tokenInfo={tokenInfo}
     />);
 }

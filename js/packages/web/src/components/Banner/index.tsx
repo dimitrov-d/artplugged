@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { AuctionView, useArt } from '../../hooks';
+import { AuctionView } from '../../hooks';
 import { Typography } from 'antd';
 const { Text } = Typography;
 import { HeroCarousel } from './styled';
@@ -50,16 +50,16 @@ export const Banner = (props: {
         <div id="artwork">
           <Text strong style={{fontSize: '20px'}}>Latest Listings</Text>
           <HeroCarousel autoplay={true} dots={{ className: 'carousel-dots' }} dotPosition="top">
-            {/* {props.auctions.map((auction, idx) =>
+            {props.auctions.map((auction, idx) =>
             <ListingPreview
               key={idx}
               auction={auction}
             />
-            )} */}
-            <ListingPreview
+            )}
+            {/* <ListingPreview
               key={0}
               auction={props.auctions[0]}
-            />
+            /> */}
           </HeroCarousel>
         </div>
         <div id="banner-inner">
