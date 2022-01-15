@@ -38,7 +38,7 @@ export const ArtistView = () => {
           style={{ margin: '0 30px', textAlign: 'left', fontSize: '1.4rem' }}
         >
           <Col span={24}>
-            <h2>
+            <h2 style={{fontSize: '1.5rem'}}>
               {/* <MetaAvatar creators={creator ? [creator] : []} size={100} /> */}
               {creator?.info.name || creator?.info.address}
             </h2>
