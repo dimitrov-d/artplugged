@@ -98,6 +98,7 @@ export const SalesListView = () => {
         subHeadingText="Buy exclusive Art Plugged Network curated NFTs"
         actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
         auctions={firstFiveAuctions}
+        isLoading={isLoading}
         useBannerBg
       />
       <Layout>

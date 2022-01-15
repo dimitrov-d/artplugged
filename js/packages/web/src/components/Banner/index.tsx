@@ -4,7 +4,7 @@ import { AuctionView } from '../../hooks';
 import { Typography } from 'antd';
 const { Text } = Typography;
 import { HeroCarousel } from './styled';
-import { ListingPreview } from '../ListingPreview/ListingPreview';
+import { ListingPreview, SkeletonListing } from '../ListingPreview/ListingPreview';
 export const Banner = (props: {
   src: string;
   useBannerBg: boolean;
@@ -13,6 +13,7 @@ export const Banner = (props: {
   actionComponent?: JSX.Element;
   children?: React.ReactNode;
   auctions: AuctionView[];
+  isLoading: boolean;
 }) => {
   useEffect(() => {
     const mainBg = document.getElementById('main-bg');
@@ -34,7 +35,7 @@ export const Banner = (props: {
       }
       if (gradient) gradient.style.display = 'none';
     };
-  }, [props.src, props.useBannerBg, props.auctions]);
+  }, [props.src, props.useBannerBg, props.auctions, props.isLoading]);
 
   return (
     <>
@@ -48,19 +49,22 @@ export const Banner = (props: {
       </div>
       <div id={'current-banner'}>
         <div id="artwork">
-          <Text strong style={{fontSize: '20px'}}>Latest Listings</Text>
-          <HeroCarousel autoplay={true} dots={{ className: 'carousel-dots' }} dotPosition="top">
-            {props.auctions.map((auction, idx) =>
-            <ListingPreview
-              key={idx}
-              auction={auction}
-            />
-            )}
-            {/* <ListingPreview
+          <Text strong style={{ fontSize: '20px' }}>Latest Listings</Text>
+          {props.isLoading && <SkeletonListing />}
+          {!props.isLoading &&
+            <HeroCarousel autoplay={true} dots={{ className: 'carousel-dots' }} dotPosition="top">
+              {props.auctions.map((auction, idx) =>
+                <ListingPreview
+                  key={idx}
+                  auction={auction}
+                />
+              )}
+              {/* <ListingPreview
               key={0}
               auction={props.auctions[0]}
             /> */}
-          </HeroCarousel>
+            </HeroCarousel>
+          }
         </div>
         <div id="banner-inner">
           <div id={'message-container'}>
