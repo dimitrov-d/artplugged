@@ -44,11 +44,6 @@ export const Banner = (props: {
           <div id={'main-heading'}>{props.headingText}</div>
           <div id={'sub-heading'}>{props.subHeadingText}</div>
           {props.actionComponent}
-          <div className="powered-by">
-            <span>
-              POWERED BY <b>METAPLEX AND SOLANA</b>
-            </span>
-          </div>
         </div>
       </div>
       <div id={'current-banner'}>
@@ -72,11 +67,11 @@ export const Banner = (props: {
             <div id={'main-heading'}>{props.headingText}</div>
             <div id={'sub-heading'}>{props.subHeadingText}</div>
             {props.actionComponent}
-            <div className="powered-by">
+            {/* <div className="powered-by">
               <span>
                 POWERED BY <b>METAPLEX AND SOLANA</b>
               </span>
-            </div>
+            </div> */}
           </div>
           {props.children}
         </div>

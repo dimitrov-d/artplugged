@@ -47,7 +47,18 @@ export const useAuctionsList = (
     () => auctions.some(auction => resaleAuctionsFilter(auction)),
     [auctions],
   );
-  const firstFiveAuctions = useMemo(() => _.take(auctions, 5), [auctions]);
+  const firstFiveAuctions = useMemo(
+    () =>
+      _.take(
+        _.reverse(
+          _.sortBy(auctions, auction =>
+            auction?.auction?.info?.endedAt?.toNumber(),
+          ),
+        ),
+        5,
+      ),
+    [auctions],
+  );
 
   return { auctions: filteredAuctions, hasResaleAuctions, firstFiveAuctions };
 };

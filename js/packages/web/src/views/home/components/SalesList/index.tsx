@@ -90,8 +90,6 @@ export const SalesListView = () => {
   const { isLoading } = useMeta();
   const [sortBy, setSortBy] = useState<SortOptions>(SortOptions.New);
   const { auctions, hasResaleAuctions, firstFiveAuctions } = useAuctionsList(activeKey, sortBy);
-  console.log(firstFiveAuctions);
-  // const [filterBy] = useState<LiveAuctionViewState>(LiveAuctionViewState.All);
   return (
     <>
       <Banner

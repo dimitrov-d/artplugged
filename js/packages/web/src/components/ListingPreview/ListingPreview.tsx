@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { CustomImageMask, ListingPreviewContainer, ListingTitle, NFTPreview, Square, StyledSkeletonImage } from '../Banner/styled';
 import { AuctionCountdown } from '../AuctionNumbers';
 import { AuctionView } from '../../hooks';
+import { ListingPrice } from './ListingPrice';
 
 export interface Creator {
     address: string;
@@ -56,11 +57,9 @@ export function lamportToSolIsh(lamports: number | null) {
 
 export const ListingPreview = (props: { auction: AuctionView }) => {
     const [cardRef, inView] = useInView({ threshold: 0 });
-
     const [showArtPreview, setShowArtPreview] = useState(false);
     const [loading, setLoading] = useState(true);
     const [nft, setNFT] = useState<NFTMetadata | null>(null);
-
     useEffect(() => {
         async function fetchAuctionData() {
             if (!props.auction) return;
@@ -109,7 +108,7 @@ export const ListingPreview = (props: { auction: AuctionView }) => {
                             {nft?.name}
                         </ListingTitle>
                         <h3>
-                            price
+                            <ListingPrice auction={props.auction} />
                         </h3>
                     </Row>
                     <AuctionCountdown auctionView={props.auction} labels={false} black={true} />
