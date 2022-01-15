@@ -53,7 +53,7 @@ export const ListingPreviewContainer = styled(Card)`
   background: white !important;
   border: none;
   border-radius: 5px !important;
-  height: 500px;
+  height: 540px;
   > .ant-card-body {
     padding: 0;
   }

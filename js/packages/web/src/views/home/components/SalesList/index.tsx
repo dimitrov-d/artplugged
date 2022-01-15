@@ -93,8 +93,8 @@ export const SalesListView = () => {
   return (
     <>
       <Banner
-        headingText="Discover, Collect NFT Artworks."
-        subHeadingText="Buy exclusive Art Plugged Network curated NFTs"
+        headingText="Discover, Collect NFT Artworks"
+        subHeadingText="From great artists on the blockchain"
         actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
         auctions={firstFiveAuctions}
         isLoading={isLoading}
